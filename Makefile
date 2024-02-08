@@ -6,7 +6,7 @@
 #    By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/07 15:41:57 by dliuzzo           #+#    #+#              #
-#    Updated: 2024/02/07 15:42:46 by dliuzzo          ###   ########.fr        #
+#    Updated: 2024/02/08 17:20:32 by dliuzzo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,10 @@ INC = -I /pipex.h
 
 LIB = -L libft/ -lft
 
-SRCS = main.c
+SRCS =	init.c \
+		liberation.c \
+		command.c \
+		main.c \
 
 OBJS = $(SRCS:.c=.o)
 
