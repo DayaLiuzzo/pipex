@@ -6,14 +6,19 @@
 /*   By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 21:00:49 by dliuzzo           #+#    #+#             */
-/*   Updated: 2024/02/08 17:30:34 by dliuzzo          ###   ########.fr       */
+/*   Updated: 2024/02/08 18:20:08 by dliuzzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int exec_command(t_rome **rome,char const **env)
+int exec_command(t_rome *rome,char const **env)
 {
+    int i;
+    i = 0;
+    
+    if (env[i])
+    printf("%s", env[i]);
     
     if (execve(rome->commandpath, rome->command, NULL) == -1)
     {
@@ -23,7 +28,7 @@ int exec_command(t_rome **rome,char const **env)
     return EXIT_SUCCESS;
 }
 
-void *get_command_path(t_rome **rome)
+void get_command_path(t_rome *rome)
 {
     int i;
     int f;
@@ -45,14 +50,14 @@ void *get_command_path(t_rome **rome)
             i++;
         }
     }
-    if (f = -1)
+    if (f == -1)
         path_error("Can't Find Path", rome);
     rome->commandpath = ft_strdup(rome->paths[f]);
     if (!rome->commandpath)
         path_error("Alloc Error", rome);
 }
 
-void **get_paths(t_rome **rome, char **env)
+void get_paths(t_rome *rome, char **env)
 {
     int i;
     int j;
@@ -61,7 +66,7 @@ void **get_paths(t_rome **rome, char **env)
     j = -1;
     while(env[i])
     {
-        if (strncmp("PATH=", env[i], 4))
+        if (ft_strncmpp("PATH=", env[i], 4) == 1)
         {
             j = i;
             break;
@@ -78,10 +83,10 @@ void **get_paths(t_rome **rome, char **env)
         path_error("Cant find Path", rome);  
 }
 
-void **get_command(t_rome **rome, char *av)
+void get_command(t_rome *rome, char *av)
 {
     
     rome->command = ft_split(av, ' ');
     if(!rome->command)
-        ft_error("Error Alloc", rome);
+        path_error("Error Alloc", rome);
 }

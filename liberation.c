@@ -6,13 +6,13 @@
 /*   By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 14:23:36 by dliuzzo           #+#    #+#             */
-/*   Updated: 2024/02/08 17:30:56 by dliuzzo          ###   ########.fr       */
+/*   Updated: 2024/02/08 19:21:19 by dliuzzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"pipex.h"
 
-void free_path(t_rome **rome)
+void free_path(t_rome *rome)
 {
     int	i;
 
@@ -28,7 +28,7 @@ void free_path(t_rome **rome)
 	}
 }
 
-void free_command(t_rome **rome)
+void free_command(t_rome *rome)
 {
     int	i;
 
@@ -44,7 +44,7 @@ void free_command(t_rome **rome)
 	}
 }
 
-int path_error(char *msg, t_rome **rome)
+int path_error(char *msg, t_rome *rome)
 {
     if (msg)
     	ft_printf("%s\n", msg);
@@ -55,7 +55,7 @@ int path_error(char *msg, t_rome **rome)
     exit(1);
 }
 
-void reset_rome(t_rome **rome)
+void reset_rome(t_rome *rome)
 {
     free_path(rome);
     free_command(rome);
@@ -63,7 +63,7 @@ void reset_rome(t_rome **rome)
         free(rome->commandpath);
 }
 
-int liberation(char *msg, t_rome **rome)
+int liberation(char *msg, t_rome *rome)
 {
     if (msg)
     	ft_printf("%s\n", msg);
@@ -71,7 +71,5 @@ int liberation(char *msg, t_rome **rome)
     free_command(rome);
     if (rome->commandpath)
 		free(rome->commandpath);
-	if (rome)
-		free(rome);
     exit(1);
 }

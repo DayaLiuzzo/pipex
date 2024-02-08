@@ -6,7 +6,7 @@
 /*   By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 14:32:38 by dliuzzo           #+#    #+#             */
-/*   Updated: 2024/01/09 17:49:40 by dliuzzo          ###   ########.fr       */
+/*   Updated: 2024/02/08 18:32:17 by dliuzzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	i = 0;
 	j = 0;
+	
 	while (s1[i])
 		i++;
 	while (s2[j])

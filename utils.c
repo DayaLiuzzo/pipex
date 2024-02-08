@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/08 16:10:06 by dliuzzo           #+#    #+#             */
-/*   Updated: 2024/02/08 17:42:03 by dliuzzo          ###   ########.fr       */
+/*   Created: 2024/02/08 18:11:45 by dliuzzo           #+#    #+#             */
+/*   Updated: 2024/02/08 18:21:55 by dliuzzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"pipex.h"
 
-void init_struct(t_rome *rome)
+int ft_strncmpp(char *s1, char *s2, int n)
 {
-    rome->command = NULL;
-    rome->commandpath = NULL;
-    rome->paths = NULL;
+    int i;
+
+    i = 0;
+    if(s1 || s2)
+    {
+        while(s1 && s1[i] && s2 && s2[i] && i < n)
+        {
+            if(s1[i] != s2[i])
+            return (0);
+            i++;
+        }
+        return (1);
+    }
+    return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:04:44 by dliuzzo           #+#    #+#             */
-/*   Updated: 2024/02/07 20:46:56 by dliuzzo          ###   ########.fr       */
+/*   Updated: 2024/02/08 18:27:34 by dliuzzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	ft_strlen_c(char const *s, char c)
 	int	i;
 
 	i = 0;
-	while (s[i] && !(s[i] == c))
+	while (s[i] && !(s[i] == c) && s[i] != '\0')
 		i++;
 	return (i);
 }

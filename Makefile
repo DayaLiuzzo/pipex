@@ -6,7 +6,7 @@
 #    By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/07 15:41:57 by dliuzzo           #+#    #+#              #
-#    Updated: 2024/02/08 17:20:32 by dliuzzo          ###   ########.fr        #
+#    Updated: 2024/02/08 18:21:17 by dliuzzo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,8 @@ SRCS =	init.c \
 		liberation.c \
 		command.c \
 		main.c \
+		utils.c \
+		check_args.c \
 
 OBJS = $(SRCS:.c=.o)
 

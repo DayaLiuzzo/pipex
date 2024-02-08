@@ -6,7 +6,7 @@
 /*   By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:43:00 by dliuzzo           #+#    #+#             */
-/*   Updated: 2024/02/08 17:30:43 by dliuzzo          ###   ########.fr       */
+/*   Updated: 2024/02/08 18:25:23 by dliuzzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,13 @@ typedef struct s_rome
 
 
 int     main(int ac, char   **av, char **env);
-char    **get_command(t_rome **rome);
-t_rome  *init_struct(void);
+void    get_command(t_rome *rome, char *av);
+void    init_struct(t_rome *rome);
 void    check_args(int ac, char **av, char **env, t_rome *rome);
-int liberation(char *msg, t_rome **rome);
-int path_error(char *msg, t_rome **rome);
+int liberation(char *msg, t_rome *rome);
+int path_error(char *msg, t_rome *rome);
+void get_paths(t_rome *rome, char **env);
+void get_command_path(t_rome *rome);
+int ft_strncmpp(char *s1, char *s2, int n);
 
 #endif
