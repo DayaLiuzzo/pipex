@@ -6,7 +6,7 @@
 /*   By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 21:00:49 by dliuzzo           #+#    #+#             */
-/*   Updated: 2024/02/08 18:20:08 by dliuzzo          ###   ########.fr       */
+/*   Updated: 2024/02/09 17:51:36 by dliuzzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,29 +30,30 @@ int exec_command(t_rome *rome,char const **env)
 
 void get_command_path(t_rome *rome)
 {
-    int i;
-    int f;
-
-    i = 0;
-    f = -1;
     if(rome->command && rome->paths && rome->command[0])
     {
-        while(rome->paths[i] && f == -1)
+        while(rome->paths[rome->i] && rome->f == -1)
         {
-            rome->paths[i] = ft_strjoin(rome->paths[i], "/");
-            if (!rome->paths[i])
+            rome->sub = ft_strjoin(rome->paths[rome->i], "/");
+            if (!rome->sub)
                 path_error("Alloc Error", rome);
-            rome->paths[i] = ft_strjoin(rome->paths[i], rome->command[0]);
-            if (!rome->paths[i])
+            rome->exe = ft_strjoin(rome->sub, rome->command[0]);
+            if (!rome->exe)
                 path_error("Alloc Error", rome);
-            if (access(rome->paths[i], X_OK) == 0)
-                f = i;
-            i++;
+            free(rome->sub);
+            if (access(rome->exe, F_OK | X_OK) == 0)
+            {
+                rome->f = 1;
+                free(rome->exe);
+                break ;
+            }
+            rome->i++;
+            free(rome->exe);
         }
     }
-    if (f == -1)
+    if (rome->f == -1)
         path_error("Can't Find Path", rome);
-    rome->commandpath = ft_strdup(rome->paths[f]);
+    rome->commandpath = ft_strdup(rome->paths[rome->i]);
     if (!rome->commandpath)
         path_error("Alloc Error", rome);
 }

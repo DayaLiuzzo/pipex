@@ -6,7 +6,7 @@
 /*   By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 14:32:38 by dliuzzo           #+#    #+#             */
-/*   Updated: 2024/02/08 18:32:17 by dliuzzo          ###   ########.fr       */
+/*   Updated: 2024/02/09 16:41:53 by dliuzzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ char	*join(char const *ss1, char const *ss2, char *ffullbish)
 
 	i = 0;
 	j = 0;
-	while (ss1[i])
+	while (ss1[i] && ss1[i] != '\0')
 	{
 		ffullbish[i] = ss1[i];
 		i++;
 	}
-	while (ss2[j])
+	while (ss2[j] && ss2[j] != '\0')
 	{
 		ffullbish[i] = ss2[j];
 		i++;
@@ -44,9 +44,11 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	i = 0;
 	j = 0;
 	
-	while (s1[i])
+	if (!s1 && !s2)
+		return (NULL);
+	while (s1[i] && s1[i] != '\0')
 		i++;
-	while (s2[j])
+	while (s2[j] && s2[j] != '\0')
 		j++;
 	fullbish = (char *)malloc((j + i + 1) * sizeof(char));
 	if (fullbish == NULL)

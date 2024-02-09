@@ -6,7 +6,7 @@
 /*   By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 14:23:36 by dliuzzo           #+#    #+#             */
-/*   Updated: 2024/02/08 19:21:19 by dliuzzo          ###   ########.fr       */
+/*   Updated: 2024/02/09 16:34:06 by dliuzzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@ void free_path(t_rome *rome)
 		}
 		free(rome->paths);
 	}
+	// if (rome->paths)
+	// 	while(rome->paths[i])
+	// 	{	
+	// 		printf(" PATHS------> %s\n", rome->paths[i]);
+	// 		i++;
+	// 	}
 }
 
 void free_command(t_rome *rome)
@@ -47,11 +53,13 @@ void free_command(t_rome *rome)
 int path_error(char *msg, t_rome *rome)
 {
     if (msg)
-    	ft_printf("%s\n", msg);
+	ft_printf("%s\n", msg);
     free_path(rome);
     free_command(rome);
     if (rome->commandpath)
+	{
         free(rome->commandpath);
+	}
     exit(1);
 }
 
@@ -65,11 +73,26 @@ void reset_rome(t_rome *rome)
 
 int liberation(char *msg, t_rome *rome)
 {
+	int i = 0;
     if (msg)
-    	ft_printf("%s\n", msg);
-    free_path(rome);
-    free_command(rome);
+		ft_printf("%s\n", msg);
+	free_path(rome);
+	free_command(rome);
+	i = 0;
+	// if (rome->paths)
+	// 	while(rome->paths[i])
+	// 	{	
+	// 		printf(" ROME-PATHS------> %s\n", rome->paths[i]);
+	// 		i++;
+	// 	}
+	// if (rome->command)
+	// 	while(rome->command[i])
+	// 	{	
+	// 		printf(" ROME->COMMAND------> %s\n", rome->command[i]);
+	// 		i++;
+	// 	}	
     if (rome->commandpath)
 		free(rome->commandpath);
+	// printf(" COMMAND PATH------> %s\n", rome->commandpath);
     exit(1);
 }
