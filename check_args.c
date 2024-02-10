@@ -6,7 +6,7 @@
 /*   By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 17:01:19 by dliuzzo           #+#    #+#             */
-/*   Updated: 2024/02/09 21:14:18 by dliuzzo          ###   ########.fr       */
+/*   Updated: 2024/02/10 14:40:40 by dliuzzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,54 @@
 
 void check_args(int ac, char **av, char **env, t_rome *rome)
 {
-    int fd;
-    
     if(ac <= 4)
         liberation("des arguments ouuu", rome);
     if(!env[0])
         liberation("ou est l environnement mv ?", rome);
     if(ft_strncmpp(av[1], "here_doc", 9 ))
+    {
         rome->id = 3;
-    if(rome->id == 1)
-    {   
-        fd = open(av[rome->id], O_RDONLY);
-        if(fd == -1)
-            liberation("WRONG FILE", rome);
-        close(fd);
-        
+        rome->f2 = open(av[ac-1], O_WRONLY);
     }
-    fd = open(av[ac-1], O_WRONLY);
-    if (fd == -1)
-        liberation("WRONG FILE", rome);
-    close(fd);
+    if(rome->id == 2)
+    {   
+        rome->f1 = open(av[1], O_RDONLY);
+        rome->f2 = open(av[ac-1], O_WRONLY);
+    }
+}
+
+void ft_here_doc(char *end)
+{
+    int fd[2];
+    int pid;
+    
+    if (pipe(fd) == -1)
+        exit(0);
+    pid = fork()
+    if (pid == -1)
+        exit(0);
+    if (pid == 0)
+        fill_pipe(end, fd)
+    
+}
+
+void fill_pipe(char *end, int fd[2])
+{
+    char *cline;
+    
+    //close reading end of pipe cos we read from stdin
+    close(fd[0]);
+    while(1)
+    {
+        cline = get_next_line(0);
+        if(ft_strncmpp(cline, end, ft_strlen(end)) == 0)
+        {
+            free(cline);
+            exit(0);
+        }
+        ft_putstr_fd(cline, fd[1]);
+        free(cline);
+    }
+    return (0)
+    
 }

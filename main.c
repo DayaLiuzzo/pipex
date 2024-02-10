@@ -6,7 +6,7 @@
 /*   By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:51:03 by dliuzzo           #+#    #+#             */
-/*   Updated: 2024/02/09 21:14:53 by dliuzzo          ###   ########.fr       */
+/*   Updated: 2024/02/10 14:09:41 by dliuzzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,17 @@
 int main(int    ac, char **av, char **env)
 {
     t_rome rome;
-    int i;
 
-    i = 2;
-    
     init_struct(&rome);
     check_args(ac, av, env, &rome);
-    while(av[i])
-    {
-    ft_exec(&rome, av[i], env);
-    i++;
-    }
-    printf("\n%i\n",i);
+    if(rome.id == 3)
+        ft_here_doc(av[2]);
+    else
+        dup2(rome.f1, STDIN_FILENO);
+    while (rome.id < ac - 2)
+    
+    
+    ft_exec(&rome, av[ac - 2], env);
     liberation("finito pipo", &rome);
     return(0);
 }

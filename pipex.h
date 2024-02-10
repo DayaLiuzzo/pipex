@@ -6,7 +6,7 @@
 /*   By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:43:00 by dliuzzo           #+#    #+#             */
-/*   Updated: 2024/02/09 20:59:12 by dliuzzo          ###   ########.fr       */
+/*   Updated: 2024/02/10 13:02:12 by dliuzzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct s_rome
     int j;
     int f;
     int id;
+    int f1;
+    int f2;
     
     
 } t_rome;
