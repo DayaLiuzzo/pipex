@@ -6,7 +6,7 @@
 /*   By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 21:00:49 by dliuzzo           #+#    #+#             */
-/*   Updated: 2024/02/09 20:51:43 by dliuzzo          ###   ########.fr       */
+/*   Updated: 2024/02/10 19:23:25 by dliuzzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void get_command_path(t_rome *rome)
         free(rome->exe);
     }
     if (rome->f == -1)
-        path_error("Can't Find Path", rome);
+        path_error2(rome);
 }
 
 void get_paths(t_rome *rome, char **env)
@@ -85,7 +85,7 @@ void get_paths(t_rome *rome, char **env)
             path_error("Error Alloc", rome);
     }
     else 
-        path_error("Cant find Path", rome);  
+        path_error2(rome);  
 }
 
 void get_command(t_rome *rome, char *av)

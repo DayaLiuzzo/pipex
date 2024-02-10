@@ -6,7 +6,7 @@
 /*   By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 14:23:36 by dliuzzo           #+#    #+#             */
-/*   Updated: 2024/02/09 16:34:06 by dliuzzo          ###   ########.fr       */
+/*   Updated: 2024/02/10 19:22:44 by dliuzzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,17 @@ void free_command(t_rome *rome)
 		}
 		free(rome->command);
 	}
+}
+
+int path_error2(t_rome *rome)
+{
+    free_path(rome);
+    free_command(rome);
+    if (rome->commandpath)
+	{
+        free(rome->commandpath);
+	}
+    exit(1);
 }
 
 int path_error(char *msg, t_rome *rome)
