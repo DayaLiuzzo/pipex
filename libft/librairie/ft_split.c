@@ -6,14 +6,14 @@
 /*   By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:04:44 by dliuzzo           #+#    #+#             */
-/*   Updated: 2024/02/08 19:37:11 by dliuzzo          ###   ########.fr       */
+/*   Updated: 2024/02/10 15:35:26 by dliuzzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/printf.h"
 #include <stdlib.h>
 
-static int	count_word(char const *s, char c)
+static int	count_word(char *s, char c)
 {
 	int	word;
 
@@ -32,7 +32,7 @@ static int	count_word(char const *s, char c)
 	return (word);
 }
 
-static int	ft_strlen_c(char const *s, char c)
+static int	ft_strlen_c(char *s, char c)
 {
 	int	i;
 
@@ -42,7 +42,7 @@ static int	ft_strlen_c(char const *s, char c)
 	return (i);
 }
 
-static char	*malloc_word(char const *s, char c)
+static char	*malloc_word(char *s, char c)
 {
 	char	*word;
 	int		len;
@@ -62,11 +62,13 @@ static char	*malloc_word(char const *s, char c)
 	return (word);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char *str, char c)
 {
 	char	**tab;
+	char		*s;
 	int		i;
 
+	s = str;
 	if (!s)
 		return (NULL);
 	tab = (char **)malloc(sizeof(char *) * (count_word(s, c) + 1));
