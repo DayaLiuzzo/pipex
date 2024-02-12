@@ -6,7 +6,7 @@
 /*   By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 21:00:49 by dliuzzo           #+#    #+#             */
-/*   Updated: 2024/02/12 12:47:26 by dliuzzo          ###   ########.fr       */
+/*   Updated: 2024/02/12 13:52:22 by dliuzzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	get_command_path(t_rome *rome)
 		free(rome->exe);
 	}
 	if (rome->f == -1)
-		path_error2(rome);
+		path_error("Command Not Found", rome);
 }
 
 void	get_paths(t_rome *rome, char **env)

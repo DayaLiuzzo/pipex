@@ -6,7 +6,7 @@
 /*   By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 14:23:36 by dliuzzo           #+#    #+#             */
-/*   Updated: 2024/02/12 12:51:58 by dliuzzo          ###   ########.fr       */
+/*   Updated: 2024/02/12 15:02:44 by dliuzzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,7 @@ int	path_error2(t_rome *rome)
 
 int	path_error(char *msg, t_rome *rome)
 {
-	if (msg)
-		ft_printf("%s\n", msg);
+	perror(msg);
 	free_path(rome);
 	free_command(rome);
 	if (rome->commandpath)
@@ -70,8 +69,7 @@ int	path_error(char *msg, t_rome *rome)
 
 int	liberation(char *msg, t_rome *rome)
 {
-	if (msg)
-		ft_printf("%s\n", msg);
+	perror(msg);
 	free_path(rome);
 	free_command(rome);
 	if (rome->commandpath)
