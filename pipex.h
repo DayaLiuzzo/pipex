@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef PIPEX_H
+# define PIPEX_H
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42

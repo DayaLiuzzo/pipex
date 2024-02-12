@@ -6,7 +6,7 @@
 /*   By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 17:59:26 by dliuzzo           #+#    #+#             */
-/*   Updated: 2024/02/10 17:14:37 by dliuzzo          ###   ########.fr       */
+/*   Updated: 2024/02/12 12:49:51 by dliuzzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	storage[fd] = line_reader(fd, storage[fd]);
 	if (!storage[fd])
-		return(NULL);
+		return (NULL);
 	line = get_line(storage[fd]);
 	storage[fd] = save_line(storage[fd]);
 	return (line);

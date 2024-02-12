@@ -6,7 +6,7 @@
 /*   By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:04:44 by dliuzzo           #+#    #+#             */
-/*   Updated: 2024/02/10 15:35:26 by dliuzzo          ###   ########.fr       */
+/*   Updated: 2024/02/12 12:49:32 by dliuzzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static char	*malloc_word(char *s, char c)
 char	**ft_split(char *str, char c)
 {
 	char	**tab;
-	char		*s;
+	char	*s;
 	int		i;
 
 	s = str;
