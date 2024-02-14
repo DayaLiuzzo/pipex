@@ -6,7 +6,7 @@
 /*   By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 17:01:19 by dliuzzo           #+#    #+#             */
-/*   Updated: 2024/02/12 12:46:24 by dliuzzo          ###   ########.fr       */
+/*   Updated: 2024/02/13 17:36:46 by dliuzzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,20 @@ void	check_args(int ac, char **av, char **env, t_rome *rome)
 		liberation("des arguments ouuu", rome);
 	if (!env[0])
 		liberation("ou est l environnement mv ?", rome);
-	if (ft_strncmpp(av[1], "here_doc", 9))
+	if (ft_strncmpp(av[1], "here_doc", 8) != 0)
 	{
 		rome->id = 3;
 		rome->f2 = open(av[ac - 1], O_WRONLY | O_CREAT | O_APPEND, 0777);
+		if (rome->f1 < 0)
+			liberation("ERROR", rome);
 	}
 	if (rome->id == 2)
 	{
 		rome->f1 = open(av[1], O_RDONLY, 0777);
+		if (rome->f1 < 0)
+			liberation("ERROR", rome);
 		rome->f2 = open(av[ac - 1], O_WRONLY | O_CREAT | O_TRUNC, 0777);
+		if (rome->f1 < 0)
+			liberation("ERROR", rome);
 	}
 }

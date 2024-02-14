@@ -1,0 +1,20 @@
+
+
+1 trouver chemin de commande (tous les parametres pour execve)
+
+1er parametre classique de execve : /bin/usr/ls  ( chemin + command)
+1er parametre shady de execve : ./script.sh  (!pas dans path mais dans notre current repo)
+1er parametre shady de execve (utiliser access des le debut pour check s il s agit d une commande valable)
+(execve fera le tri des valeurs en l envoyant a l execution)
+
+
+ordre d execution (path / command / execve / access)
+{
+    0 split sur av[i] (cmd);
+    1 access && strnstr("/" *pour checker s il s agit pas d un chemin absoludeja*)
+    2 Avancer dans ENV jsuqu a trouver PATH (strncmp(PATH, 4));
+    3 Split Path
+    4 *soner relou
+    5 Access (join Path[] + command) (si erreur ft_liberation sous execve)
+}
+

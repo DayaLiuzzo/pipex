@@ -6,7 +6,7 @@
 /*   By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 21:00:49 by dliuzzo           #+#    #+#             */
-/*   Updated: 2024/02/12 13:52:22 by dliuzzo          ###   ########.fr       */
+/*   Updated: 2024/02/13 17:59:20 by dliuzzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,20 @@
 int	ft_exec(t_rome *rome, char *av, char **env)
 {
 	get_command(rome, av);
-	get_paths(rome, env);
-	get_command_path(rome);
-	exec_command(rome, env);
-	return (1);
+	if(rome->command[0] && rome->command[0][0] != '\0')
+	{
+		if(access(rome->command[0], F_OK | X_OK ) != 0 ||
+		 ft_strchr(rome->command[0], '/') == NULL)
+		{
+			get_paths(rome, env);
+			get_command_path(rome);
+		}
+		else 
+		rome->commandpath = rome->command[0];
+		exec_command(rome, env);
+	}
+	path_error(rome->commandpath, rome);
+	return 1;
 }
 
 int	exec_command(t_rome *rome, char **env)
@@ -89,7 +99,10 @@ void	get_paths(t_rome *rome, char **env)
 
 void	get_command(t_rome *rome, char *av)
 {
-	rome->command = ft_split(av, ' ');
-	if (!rome->command)
-		path_error("Error Alloc", rome);
+	if(av)
+	{
+		rome->command = ft_split(av, ' ');
+		if (!rome->command)
+			path_error("Error Alloc", rome);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:11:45 by dliuzzo           #+#    #+#             */
-/*   Updated: 2024/02/12 12:51:36 by dliuzzo          ###   ########.fr       */
+/*   Updated: 2024/02/14 14:48:55 by dliuzzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_strncmpp(char *s1, char *s2, int n)
 				return (0);
 			i++;
 		}
-		return (1);
+			return (1);
 	}
 	return (0);
 }
@@ -86,7 +86,7 @@ void	fill_pipe(char **end, int fd[2])
 	while (1)
 	{
 		cline = get_next_line(0);
-		if (ft_strncmpp(cline, end[2], ft_strlen(end[2])) == 1)
+		if (ft_strncmpp(end[2], cline, ft_strlen(end[2])) == 1)
 		{
 			free(cline);
 			exit(0);
