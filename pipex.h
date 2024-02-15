@@ -6,7 +6,7 @@
 /*   By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:43:00 by dliuzzo           #+#    #+#             */
-/*   Updated: 2024/02/10 19:22:33 by dliuzzo          ###   ########.fr       */
+/*   Updated: 2024/02/15 15:22:35 by dliuzzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int			path_error2(t_rome *rome);
 int			ft_strncmpp(char *s1, char *s2, int n);
 int			exec_command(t_rome *rome, char **env);
 int			ft_exec(t_rome *rome, char *av, char **env);
-int			add_pipe(char *av, char **env, t_rome *rome);
+int			add_pipe(char *av, char **env, t_rome *rome, int i);
 int			ft_strlen2(const char *str);
 int			find_the_n(char *storage);
 char		*get_next_line(int fd);

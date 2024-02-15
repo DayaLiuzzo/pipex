@@ -6,7 +6,7 @@
 /*   By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 18:11:45 by dliuzzo           #+#    #+#             */
-/*   Updated: 2024/02/14 14:48:55 by dliuzzo          ###   ########.fr       */
+/*   Updated: 2024/02/15 15:32:28 by dliuzzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ int	ft_strncmpp(char *s1, char *s2, int n)
 				return (0);
 			i++;
 		}
-			return (1);
+		return (1);
 	}
 	return (0);
 }
 
-int	add_pipe(char *av, char **env, t_rome *rome)
+int	add_pipe(char *av, char **env, t_rome *rome, int i)
 {
 	int	fd[2];
 	int	pid;
@@ -40,19 +40,21 @@ int	add_pipe(char *av, char **env, t_rome *rome)
 	pid = fork();
 	if (pid == -1)
 		exit(0);
-	if (pid == 0)
+	if (pid == 0 && i != 0)
 	{
+		perror("Child");
 		close(fd[0]);
 		dup2(fd[1], STDOUT_FILENO);
 		close(fd[1]);
 		if (ft_exec(rome, av, env) == 1)
 			exit(0);
 	}
-	else
+	if (pid == 0 && i == 0)
 	{
-		close(fd[1]);
-		dup2(fd[0], STDIN_FILENO);
-		close(fd[0]);
+		dup2(rome->f2, STDOUT_FILENO);
+		close(rome->f1);
+		close(rome->f2);
+		ft_exec(rome, av, env);
 	}
 	return (0);
 }
