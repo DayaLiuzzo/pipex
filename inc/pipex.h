@@ -6,7 +6,7 @@
 /*   By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:43:00 by dliuzzo           #+#    #+#             */
-/*   Updated: 2024/02/15 15:22:35 by dliuzzo          ###   ########.fr       */
+/*   Updated: 2024/02/16 13:41:31 by dliuzzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 #  define BUFFER_SIZE 42
 # endif
 
-# include "libft/includes/libft.h"
-# include "libft/includes/printf.h"
+# include "../libft/includes/libft.h"
+# include "../libft/includes/printf.h"
 # include <errno.h>
 # include <fcntl.h>
 # include <stdio.h>

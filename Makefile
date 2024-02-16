@@ -6,49 +6,107 @@
 #    By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/07 15:41:57 by dliuzzo           #+#    #+#              #
-#    Updated: 2024/02/10 15:29:42 by dliuzzo          ###   ########.fr        #
+#    Updated: 2024/02/16 14:21:25 by dliuzzo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = cc
-
-FLAG = -Wall -Wextra -Werror -g
-
-INC = -I /pipex.h
-
-LIB = -L libft/ -lft
-
-SRCS =	init.c \
-		liberation.c \
-		command.c \
-		main.c \
-		utils.c \
-		check_args.c \
-		get_next_line.c \
-		get_next_line_utils.c \
-
-OBJS = $(SRCS:.c=.o)
-
 NAME = pipex
 
-all : $(NAME)
+ifeq ($(MAKECMDGOALS), bonus)
+NAME = pipex_bonus
+endif
 
-$(NAME) : $(OBJS)
-	make -C libft/
-	$(CC) $(FLAG) $(OBJS) -o $(NAME) $(INC) $(LIB)
+S = src/
 
-%.o : %.c
-	$(CC) $(FLAG) $(INC) -c $< -o $@
+ifeq ($(MAKECMDGOALS), bonus)
+S = bonus/
+endif
 
-clean :
-	rm -f $(OBJS)
+I = inc/
 
-fclean : clean
-	rm -f $(NAME)
+L = libft/
 
-re : fclean $(NAME)
+O = obj/
 
-lclean : 
+D = dep/
+
+
+CC = cc
+
+CFLAGS = -Wall -Wextra -Werror
+
+ifeq ($(MAKECMDGOALS), debug)
+CFLAGS += -g3
+#CFLAGS += -fsanitize=address
+endif
+
+CFLAGS += -I$I
+
+LDFLAGS = -L$L -lft
+
+SRCS =	$Sinit.c \
+		$Sliberation.c \
+		$Scommand.c \
+		$Smain.c \
+		$Sutils.c \
+		$Scheck_args.c \
+		$Sget_next_line.c \
+		$Sget_next_line_utils.c
+#		$(addprefix $S, examplefolder/)
+
+ifeq ($(MAKECMDGOALS), bonus)
+SRCS = $Snomfichier_bonus.c
+endif
+
+RM	=	rm -rf
+
+OBJS =	$(SRCS:$S%=$O%.o)
+
+DEP =	$(SRCS:$S%=$D%.d)
+
+all : lib $(NAME)
+
+$O:
+	mkdir -p $@
+
+$(OBJS): | $O
+
+$(OBJS): $O%.o: $S%
+#	mkdir -p $@
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$D:
+	mkdir -p $@
+
+$(DEP): | $D
+
+$(DEP): $D%.d: $S%
+#	mkdir -p $@
+	$(CC) $(CFLAGS) -MM -MF $@ -MT "$O$*.o $@" $<
+
+$(NAME) : $(OBJS) $(DEP)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LDFLAGS)
+
+lib:
+	make -C $L
+
+debug: all
+
+cleanobjs:
+	$(RM) $(OBJS)
+
+lclean:
 	make fclean -C libft/
 
-.PHONY: all clean fclean lclean re
+cleandep: 
+	$(RM) $(DEP)
+
+clean: cleanobjs cleandep
+
+fclean : clean lclean
+	$(RM) $(NAME)
+	$(RM) $(NAME)_bonus
+
+re: fclean $(NAME)
+
+.PHONY: all clean fclean lclean re debug lib

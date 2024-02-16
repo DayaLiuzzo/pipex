@@ -6,11 +6,14 @@
 /*   By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:51:03 by dliuzzo           #+#    #+#             */
-/*   Updated: 2024/02/15 18:25:01 by dliuzzo          ###   ########.fr       */
+/*   Updated: 2024/02/16 14:33:27 by dliuzzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+// ft_childlabor(&rome, &fd);
+// ft_childlabor(t_rome *rome, int *fd)
 
 int	main(int ac, char **av, char **env)
 {
@@ -28,10 +31,12 @@ int	main(int ac, char **av, char **env)
 		path_error("Fork Error", &rome);
 	if(pid1 == 0)
 	{
+		close(fd[0]);
 		dup2(rome.f1, STDIN_FILENO);
 		close(rome.f1);
 		dup2(fd[1], STDOUT_FILENO);
 		close(fd[1]);
+		close(rome.f2);
 		ft_exec(&rome, av[2], env);
 	}
 	pid2 = fork();
@@ -42,14 +47,19 @@ int	main(int ac, char **av, char **env)
 		close(fd[1]);
 		dup2(fd[0], STDIN_FILENO);
 		close(fd[0]);
+		close(rome.f1);
 		dup2(rome.f2, STDOUT_FILENO);
 		close(rome.f2);
 		ft_exec(&rome, av[3], env);
 	}
-	// waitpid(pid1, NULL, 1);
-	// waitpid(pid2, NULL, 1);
+	close(fd[0]);
+	close(fd[1]);
+	close(rome.f1);
+	close(rome.f2);
+	while (wait(NULL) > 0)
+		;
+	// waitpid(pid1, NULL, 0);
+	// waitpid(pid2, NULL, 0);
 	return (0);
 }
-
-
 // par defaut, 

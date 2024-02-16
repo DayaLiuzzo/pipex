@@ -6,7 +6,7 @@
 /*   By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 16:36:37 by dliuzzo           #+#    #+#             */
-/*   Updated: 2024/02/10 15:35:51 by dliuzzo          ###   ########.fr       */
+/*   Updated: 2024/02/16 13:41:54 by dliuzzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stddef.h>
-# include "../../pipex.h"
 
 typedef struct s_list
 {

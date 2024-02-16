@@ -6,7 +6,7 @@
 /*   By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 21:00:49 by dliuzzo           #+#    #+#             */
-/*   Updated: 2024/02/13 17:59:20 by dliuzzo          ###   ########.fr       */
+/*   Updated: 2024/02/16 14:14:31 by dliuzzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int	exec_command(t_rome *rome, char **env)
 	int	i;
 
 	i = 0;
+	// perror(rome->commandpath);
+	// perror(rome->command[1]);
 	if (execve(rome->commandpath, rome->command, env) == -1)
 	{
 		path_error("Exec Failure", rome);

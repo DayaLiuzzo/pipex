@@ -1,1 +1,15 @@
-.
+dep
+here_doc
+inc
+infile
+libft
+ls
+Makefile
+obj
+outfile
+pipex
+Plan_pipex.txt
+src
+test.sh
+valgrind-readline.supp
+valgrind.supp
