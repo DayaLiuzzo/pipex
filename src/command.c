@@ -6,7 +6,7 @@
 /*   By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 21:00:49 by dliuzzo           #+#    #+#             */
-/*   Updated: 2024/02/16 14:14:31 by dliuzzo          ###   ########.fr       */
+/*   Updated: 2024/02/16 15:50:02 by dliuzzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,35 +15,30 @@
 int	ft_exec(t_rome *rome, char *av, char **env)
 {
 	get_command(rome, av);
-	if(rome->command[0] && rome->command[0][0] != '\0')
+	if (rome->command[0] && rome->command[0][0] != '\0')
 	{
-		if(access(rome->command[0], F_OK | X_OK ) != 0 ||
-		 ft_strchr(rome->command[0], '/') == NULL)
+		if (access(rome->command[0], F_OK | X_OK) != 0
+			|| ft_strchr(rome->command[0], '/') == NULL)
 		{
 			get_paths(rome, env);
 			get_command_path(rome);
 		}
-		else 
-		rome->commandpath = rome->command[0];
+		else
+			rome->commandpath = rome->command[0];
 		exec_command(rome, env);
 	}
 	path_error(rome->commandpath, rome);
-	return 1;
+	return (1);
 }
 
 int	exec_command(t_rome *rome, char **env)
 {
-	int	i;
-
-	i = 0;
-	// perror(rome->commandpath);
-	// perror(rome->command[1]);
 	if (execve(rome->commandpath, rome->command, env) == -1)
 	{
 		path_error("Exec Failure", rome);
 		return (EXIT_FAILURE);
 	}
-	return (EXIT_SUCCESS);
+	return (path_error("Exec Failure", rome));
 }
 
 void	get_command_path(t_rome *rome)
@@ -101,7 +96,7 @@ void	get_paths(t_rome *rome, char **env)
 
 void	get_command(t_rome *rome, char *av)
 {
-	if(av)
+	if (av)
 	{
 		rome->command = ft_split(av, ' ');
 		if (!rome->command)

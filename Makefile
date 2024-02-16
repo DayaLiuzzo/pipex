@@ -6,7 +6,7 @@
 #    By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/07 15:41:57 by dliuzzo           #+#    #+#              #
-#    Updated: 2024/02/16 14:21:25 by dliuzzo          ###   ########.fr        #
+#    Updated: 2024/02/16 15:44:03 by dliuzzo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ SRCS =	$Sinit.c \
 		$Sutils.c \
 		$Scheck_args.c \
 		$Sget_next_line.c \
+		$Schild_management.c \
 		$Sget_next_line_utils.c
 #		$(addprefix $S, examplefolder/)
 
@@ -89,7 +90,7 @@ $(NAME) : $(OBJS) $(DEP)
 
 lib:
 	make -C $L
-
+	
 debug: all
 
 cleanobjs:
@@ -105,8 +106,8 @@ clean: cleanobjs cleandep
 
 fclean : clean lclean
 	$(RM) $(NAME)
-	$(RM) $(NAME)_bonus
+#	$(RM) $(NAME)_bonus
 
-re: fclean $(NAME)
+re: fclean all
 
 .PHONY: all clean fclean lclean re debug lib

@@ -6,7 +6,7 @@
 /*   By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:43:00 by dliuzzo           #+#    #+#             */
-/*   Updated: 2024/02/16 13:41:31 by dliuzzo          ###   ########.fr       */
+/*   Updated: 2024/02/16 15:50:27 by dliuzzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,14 @@ typedef struct s_rome
 	int		id;
 	int		f1;
 	int		f2;
-
+	int		fd[2];
+	int		pid1;
+	int		pid2;
 }			t_rome;
 
+int			ft_childlabor2(t_rome *rome, char **av, char **env);
+int			ft_childlabor1(t_rome *rome, char **av, char **env);
+void		ft_closefd(t_rome *rome);
 void		get_command(t_rome *rome, char *av);
 void		init_struct(t_rome *rome);
 void		check_args(int ac, char **av, char **env, t_rome *rome);
