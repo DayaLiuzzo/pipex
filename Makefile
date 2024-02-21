@@ -6,7 +6,7 @@
 #    By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/07 15:41:57 by dliuzzo           #+#    #+#              #
-#    Updated: 2024/02/16 15:44:03 by dliuzzo          ###   ########.fr        #
+#    Updated: 2024/02/16 16:47:29 by dliuzzo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,13 +94,13 @@ lib:
 debug: all
 
 cleanobjs:
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(O)
 
 lclean:
 	make fclean -C libft/
 
 cleandep: 
-	$(RM) $(DEP)
+	$(RM) $(DEP) $(D)
 
 clean: cleanobjs cleandep
 

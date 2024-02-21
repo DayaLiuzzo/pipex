@@ -6,7 +6,7 @@
 /*   By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:51:03 by dliuzzo           #+#    #+#             */
-/*   Updated: 2024/02/16 15:51:34 by dliuzzo          ###   ########.fr       */
+/*   Updated: 2024/02/21 12:07:51 by dliuzzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int ac, char **av, char **env)
 	t_rome	rome;
 
 	init_struct(&rome);
-	check_args(ac, av, env, &rome);
+	check_args(ac, av, &rome);
 	if (pipe(rome.fd) < 0)
 		path_error("Pipe Error", &rome);
 	rome.pid1 = fork();

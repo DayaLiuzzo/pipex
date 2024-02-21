@@ -6,7 +6,7 @@
 /*   By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 14:23:36 by dliuzzo           #+#    #+#             */
-/*   Updated: 2024/02/16 15:29:50 by dliuzzo          ###   ########.fr       */
+/*   Updated: 2024/02/16 16:02:40 by dliuzzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	path_error(char *msg, t_rome *rome)
 
 int	liberation(char *msg, t_rome *rome)
 {
-	perror(msg);
+	printf("%s\n", msg);
 	free_path(rome);
 	free_command(rome);
 	if (rome->commandpath)

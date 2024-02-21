@@ -6,7 +6,7 @@
 /*   By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:43:00 by dliuzzo           #+#    #+#             */
-/*   Updated: 2024/02/16 15:50:27 by dliuzzo          ###   ########.fr       */
+/*   Updated: 2024/02/21 12:03:25 by dliuzzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int			ft_childlabor1(t_rome *rome, char **av, char **env);
 void		ft_closefd(t_rome *rome);
 void		get_command(t_rome *rome, char *av);
 void		init_struct(t_rome *rome);
-void		check_args(int ac, char **av, char **env, t_rome *rome);
+void		check_args(int ac, char **av, t_rome *rome);
 void		get_paths(t_rome *rome, char **env);
 void		get_command_path(t_rome *rome);
 void		fill_pipe(char **end, int fd[2]);
