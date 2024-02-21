@@ -6,7 +6,7 @@
 /*   By: dliuzzo <dliuzzo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 21:00:49 by dliuzzo           #+#    #+#             */
-/*   Updated: 2024/02/21 12:23:37 by dliuzzo          ###   ########.fr       */
+/*   Updated: 2024/02/21 12:56:26 by dliuzzo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_exec(t_rome *rome, char *av, char **env)
 			rome->commandpath = rome->command[0];
 		exec_command(rome, env);
 	}
-	path_error(rome->commandpath, rome);
+	path_error("COMMAND NOT FOUND", rome);
 	return (1);
 }
 
@@ -91,7 +91,7 @@ void	get_paths(t_rome *rome, char **env)
 			path_error("Error Alloc", rome);
 	}
 	else
-		path_error2(rome);
+		path_error("Comand Not Found ", rome);
 }
 
 void	get_command(t_rome *rome, char *av)
